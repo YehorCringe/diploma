@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Прогноз Bitcoin</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Прогнозування ціни Bitcoin</h1>
+        <form action="/predict">
+            <button type="submit">Згенерувати прогноз</button>
+        </form>
+
+        {% if image_path %}
+        <div class="result">
+            <h2>Результат прогнозування:</h2>
+            <img src="{{ image_path }}" alt="Графік прогнозу">
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
