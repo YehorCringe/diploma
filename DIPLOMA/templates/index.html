@@ -6,17 +6,17 @@
     <link rel="stylesheet" href="../static/styles.css">
 </head>
 <body>
+    <a href="/login">Log out</a>
     <div class="container">
         <h1>Прогнозування ціни Bitcoin</h1>
-        <form action="/predict">
-            <button type="submit">Згенерувати прогноз</button>
-        </form>
 
         {% if image_path %}
         <div class="result">
-            <h2>Результат прогнозування:</h2>
+            <h2>Графік прогнозу:</h2>
             <img src="{{ image_path }}" alt="Графік прогнозу">
         </div>
+        {% else %}
+        <p>Очікується завантаження графіка...</p>
         {% endif %}
     </div>
 </body>
