@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Crypto prediction</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <!-- Хедер -->
+  <header class="header">
+    <div class="logo-area">
+      <img src="/static/logo.png" alt="Logo" class="logo">
+      <span class="brand-name">Crypto prediction</span>
+    </div>
+    <div class="header-controls">
+      <button id="theme-icon-toggle" class="theme-toggle-btn" title="Змінити тему">🌙</button>
+      <a href="/login" class="logout-link">Log out</a>
+    </div>
+  </header>
+
+  <!-- Основний контент -->
+  <main class="main-content">
+    <div class="content-wrapper">
+      <!-- Основний графік та субграфіки -->
+      <div class="chart-container-vertical">
+        <div id="chart" class="main-chart"></div>
+
+        <!-- RSI -->
+        <div class="sub-chart" id="rsi-container" style="display: none;">
+          <div id="rsi-chart"></div>
+        </div>
+
+        <!-- MACD -->
+        <div class="sub-chart" id="macd-container" style="display: none;">
+          <div id="macd-chart"></div>
+        </div>
+      </div>
+
+      <!-- Бокова панель -->
+      <div class="side-panel">
+        <h2>Поточні ціни BTC</h2>
+        <div class="mini-chart-box">
+          <h3>Binance</h3>
+          <svg id="chart-binance" width="300" height="150"></svg>
+        </div>
+        <div class="mini-chart-box">
+          <h3>Bybit</h3>
+          <svg id="chart-bybit" width="300" height="150"></svg>
+        </div>
+
+        <!-- Секція індикаторів -->
+        <div class="indicator-panel">
+          <div class="indicator-title">Відображення індикаторів:</div>
+          <label><input id="toggle-sma" type="checkbox" class="indicator-toggle" value="SMA_10" checked> SMA</label>
+          <label><input id="toggle-ema" type="checkbox" class="indicator-toggle" value="EMA_10" checked> EMA</label>
+          <label><input id="toggle-rsi" type="checkbox" class="indicator-toggle" value="RSI"> RSI</label>
+          <label><input id="toggle-macd" type="checkbox" class="indicator-toggle" value="MACD"> MACD</label>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Футер -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <p>© 2025 Crypto prediction.</p>
+        <p>Прогноз не є фінансовою порадою</p>
+      </div>
+      <div class="footer-right">
+        <span>Джерело даних: Binance API, Bybit</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Скрипти -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="{{ url_for('static', filename='mainChart.js') }}"></script>
+  <script src="{{ url_for('static', filename='forecastChartUpdater.js') }}"></script>
+  <script src="{{ url_for('static', filename='chartUpdater.js') }}"></script>
+  <script src="{{ url_for('static', filename='themeToggle.js') }}"></script>
+  <script>
+    const realPrices = {{ real_prices | tojson }};
+    const forecastPrices = {{ forecast_prices | tojson }};
+  </script>
+</body>
+</html>

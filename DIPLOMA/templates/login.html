@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизація</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body data-theme="dark">
+
+    <div class="auth-container">
+      <h1>Вхід</h1>
+      <form action="/login" method="POST">
+        <label for="email">Електронна адреса:</label>
+        <input type="email" name="email" required>
+        <label for="password">Пароль:</label>
+        <input type="password" name="password" required>
+        <button type="submit">Увійти</button>
+      </form>
+      <p>Ще не маєте акаунту? <a href="/register">Зареєструватися</a></p>
+    </div>
+
+</body>
+</html>
